@@ -24,6 +24,8 @@ def run_pipeline(pipeline, parameters):
                 p[k] = json.loads(p[k])
             except ValueError as err:
                 pass
+            except TypeError as err:
+                pass
             except:
                 print "Unexpected error:", sys.exc_info()[0]
         pipeline(p)
