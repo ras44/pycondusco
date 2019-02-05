@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pycondusco-ras44",
-    version="0.1.0",
+    version="0.1.1",
     author="Roland Stevenson",
     author_email="roland@rmg-services.com",
     description="pycondusco lets you run a function iteratively, passing it the rows of a dataframe or the results of a query.",
