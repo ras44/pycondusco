@@ -14,7 +14,14 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #==============================================================================
 from google.cloud import bigquery
+from run_pipeline import run_pipeline
 
 def run_pipeline_gbq(pipeline, client, query):
     query_job = client.query(query)
-    parameters = query_job.result()
+    results = query_job.result()
+    parameters = []
+    for row in results:
+        items = dict(row.items())
+        parameters.append(items)
+
+    run_pipeline(pipeline, parameters)
