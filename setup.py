@@ -16,7 +16,6 @@ setuptools.setup(
     classifiers=[
     ],
     install_requires=[
-        "google-cloud-bigquery>=1.9.0",
     ],
     setup_requires=[
         "pytest-runner",
