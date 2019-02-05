@@ -4,7 +4,7 @@
 
 pycondusco lets you run a function iteratively, passing it the rows of a dataframe or the results of a query.
 
-We call the functions pycondusco runs pipelines, and define a pipeline as a function that accepts a list of parameters and run a series of customized commands based on the values of the parameters.
+We call the functions pycondusco runs pipelines, and define a pipeline as a function that accepts a list of parameters and does something based on the values of the parameters.
 
 The most common use case for pycondusco are data pipelines.  For data pipelines that primarily run SQL queries, we can template queries with a library (ie. [pystache](https://github.com/defunkt/pystache)), so that parametrized values are separated from the query logic.  We can then render the query with the appropriate values:
 
