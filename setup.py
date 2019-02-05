@@ -14,9 +14,6 @@ setuptools.setup(
     url="https://github.com/ras44/pycondusco",
     packages=setuptools.find_packages(),
     classifiers=[
-        "Programming Language :: Python :: 2.7.5",
-        "License :: OSI Approved :: GPL-3",
-        "Operating System :: OS Independent",
     ],
     install_requires=[
         "google-cloud-bigquery",
