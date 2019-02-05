@@ -9,6 +9,10 @@ We call the functions pycondusco runs pipelines, and define a pipeline as a func
 The most common use case for pycondusco are data pipelines.  For data pipelines that primarily run SQL queries, we can template queries with a library (ie. [pystache](https://github.com/defunkt/pystache)), so that parametrized values are separated from the query logic.  We can then render the query with the appropriate values:
 
 ```
+import pycondusco
+from pycondusco.run_pipeline import run_pipeline
+import pystache
+
 json_string = '{"first_name": "First", "last_name":"Last"}'
 
 params = [
@@ -26,12 +30,10 @@ def pipeline(params):
     print pystache.render('k1 value is {{k1}}, k2 is {{k2}}',params)
 
 run_pipeline(pipeline,params)
-
 ```
 
 
 pycondusco provides the following extensions in functionality to the above design pattern:
- - the user can provide a data-frame that contains multiple rows of parameters to be iteratively passed to the pipeline
  - the user can provide a query and each row of results is iteratively passed to the pipeline
  - any JSON-string parameter will be converted to an object before being passed to the pipeline
  
@@ -51,16 +53,6 @@ pip install pycondusco
 ```
 
 ## Features
-
-*   Name-based substitution of local parameters into pipelines, iterating through rows of parameters:
-    
-```
-import pystache
-import pycondusco
-from pycondusco.run_pipeline import run_pipeline
-```
-
-
 
 *   Name-based substitution of query-results including JSON into pipelines, iterating through rows of parameters dataframe:
 ```
