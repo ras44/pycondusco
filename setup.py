@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="pycondusco-ras44",
+    name="pycondusco",
     version="0.1.0",
     author="Roland Stevenson",
     author_email="roland@rmg-services.com",
@@ -16,11 +16,13 @@ setuptools.setup(
     classifiers=[
     ],
     install_requires=[
+        "google-cloud-bigquery >= 1.0.0",
     ],
     setup_requires=[
         "pytest-runner",
     ],
     tests_require=[
-        "pytest",
+        "pytest >= 4.0.0",
+        "pystache >= 0.5.0",
     ],
 )
