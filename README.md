@@ -50,6 +50,7 @@ pycondusco provides the following extensions in functionality to the above desig
 
 ```
 pip install pycondusco
+export GOOGLE_APPLICATION_CREDENTIALS="<FILE_PATH_TO_CREDENTIALS>"
 ```
 
 ## Features
