@@ -13,8 +13,20 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #==============================================================================
-from google.cloud import bigquery
+import json
+import sys
 
-def run_pipeline_gbq(pipeline, client, query):
-    query_job = client.query(query)
-    parameters = query_job.result()
+def run_pipeline(pipeline, parameters):
+    assert(len(parameters)>0)
+    for p in parameters:
+        for k,v in p.iteritems() :
+            try:
+                p[k] = json.loads(p[k])
+            except ValueError as err:
+                pass
+            except TypeError as err:
+                pass
+            except:
+                print "Unexpected error:", sys.exc_info()[0]
+        pipeline(p)
+

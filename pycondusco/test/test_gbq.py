@@ -13,18 +13,25 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #==============================================================================
-import json
-import sys
+import unittest
+from google.cloud import bigquery
 
-def run_pipeline(pipeline, parameters):
-    assert(len(parameters)>0)
-    for p in parameters:
-        for k,v in p.iteritems() :
-            try:
-                p[k] = json.loads(p[k])
-            except ValueError as err:
-                pass
-            except:
-                print "Unexpected error:", sys.exc_info()[0]
-        pipeline(p)
+class TestGBQConn(unittest.TestCase):
+
+    def test_gbq_conn(self):
+        client = bigquery.Client()
+        query_job = client.query("""
+            SELECT
+              10 AS hits
+            FROM `bigquery-public-data.stackoverflow.posts_questions`
+            LIMIT 1""")
+
+        results = query_job.result()  # Waits for job to complete.
+
+        for row in results:
+            self.assertEqual(row.hits,10)
+
+
+if __name__ == '__main__':
+    unittest.main()
 
